@@ -70,14 +70,13 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <router-link to="/sign-up" class="button is-primary"
+              <router-link to="/register" class="button is-primary"
                 ><strong>
-                  <i class="fa-light fas fa-user-plus mr-2"></i> Sign up</strong
+                  <i class="fa-light fas fa-user-plus mr-2"></i> Register</strong
                 ></router-link
               >
-              <router-link to="/sign-in" class="button is-light">
-                <i class="fa-solid fa-arrow-right-to-bracket mr-2"></i> Sign
-                In</router-link
+              <router-link to="/login" class="button is-light">
+                <i class="fa-solid fa-arrow-right-to-bracket mr-2"></i> Log In</router-link
               >
             </div>
           </div>

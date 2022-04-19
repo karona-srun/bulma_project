@@ -10,6 +10,7 @@ import BackEnd from '../layouts/LayoutBackEnd.vue';
 // Auth
 import SignIn from '../views/auth/SignIn.vue';
 import SignUp from '../views/auth/SignUp.vue';
+import ConfirmAccount from '../views/auth/confirmAccount.vue';
 
 import Dashboard from '../views/Dashboard.vue';
 
@@ -18,6 +19,12 @@ import User from '../views/users/Index.vue';
 import CreateUser from '../views/users/Create.vue';
 import ShowUser from '../views/users/Show.vue';
 import EditUser from '../views/users/Edit.vue';
+
+// Product Category
+import ProductCategory from '../views/productCategory/Index.vue';
+import CreateProductCategory from '../views/productCategory/Create.vue';
+import EditProductCategory from '../views/productCategory/Edit.vue';
+import ShowProductCategory from '../views/productCategory/Show.vue';
  
 Vue.use(VueRouter);
 
@@ -32,14 +39,19 @@ const routes = [
             component: Home,
         },
         {
-            path: '/sign-in',
+            path: '/login',
             component: SignIn,
-            name: 'SignIn',
+            name: 'logIn',
         },
         {
-            path: '/sign-up',
+            path: '/register/activate',
+            component: ConfirmAccount,
+            name: 'ConfirmAccount',
+        },
+        {
+            path: '/register',
             component: SignUp,
-            name: 'SignUp',
+            name: 'Register',
         },
         {
             path: '/about',
@@ -81,7 +93,27 @@ const routes = [
                 props(route) {
                     return {  id: route.query.id }
                 }
-            }
+            },
+            {
+                name: 'ProductCategory',
+                path: '/product-category',
+                component: ProductCategory,
+            },
+            {
+                name: 'CreateProductCategory',
+                path: '/create-product-category',
+                component: CreateProductCategory
+            },
+            {
+                name: 'EditProductCategory',
+                path: '/edit-product-category',
+                component: EditProductCategory
+            },
+            {
+                name: 'ShowProductCategory',
+                path: '/show-product-category/:id',
+                component: ShowProductCategory,
+            },
         ]
     },
     {
@@ -93,6 +125,13 @@ const routes = [
 const router = new VueRouter({
     mode: 'history',
     routes,
+    scrollBehavior: (to, from, savedPosition)  => {
+        if (to.hash) {
+          return {selector: to.hash}
+        } else {
+          return {x: 0, y: 0}
+        }
+      },
     linkActiveClass: 'active',
 });
 

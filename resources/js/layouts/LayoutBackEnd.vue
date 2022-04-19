@@ -22,8 +22,7 @@
         </div>
         <div class="navbar-end menu-end">
           <div class="navbar-item">
-            <a class="navbar-item"> Docs </a>
-
+            <a class="navbar-item"> English </a>
             <div class="dropdown is-right is-hoverable">
               <div class="dropdown-trigger">
                 <button
@@ -45,10 +44,14 @@
                   <a href="#" class="dropdown-item"> Overview </a>
                   <a href="#" class="dropdown-item"> Settings </a>
                   <hr class="dropdown-divider" />
-                  <router-link to="/" class="has-text-danger navbar-item">
+                  <a
+                    href="#"
+                    class="has-text-danger navbar-item"
+                    @click.prevent="logOut"
+                  >
                     <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i>
-                    Sign Out
-                  </router-link>
+                    Log Out
+                  </a>
                 </div>
               </div>
             </div>
@@ -63,21 +66,26 @@
           <aside class="menu">
             <p class="menu-label">MAIN MENU</p>
             <ul class="menu-list">
-              <li><router-link to="/dashboard" class=" navbar-item">
-                 <i class="fa-solid fa-chalkboard-user mr-2"></i> Dashboard
+              <li>
+                <router-link to="/dashboard" class="navbar-item">
+                  <i class="fa-solid fa-chalkboard-user mr-2"></i> Dashboard
                 </router-link>
               </li>
             </ul>
             <p class="menu-label">PRODUCT MANAGEMENT</p>
             <ul class="menu-list">
               <li>
-                <router-link to="/users" class=" navbar-item">
-                 <i class="fa-solid fa-bag-shopping mr-2"></i> Products
+                <router-link to="/users" class="navbar-item">
+                  <i class="fa-solid fa-bag-shopping mr-2"></i> Products
                 </router-link>
               </li>
               <li>
-                <router-link to="/users" class="is-primary navbar-item">
-                  <i class="fa-solid fa-basket-shopping mr-2"></i> Product Category
+                <router-link
+                  to="/product-category"
+                  class="is-primary navbar-item"
+                >
+                  <i class="fa-solid fa-basket-shopping mr-2"></i> Product
+                  Category
                 </router-link>
               </li>
             </ul>
@@ -94,6 +102,7 @@
       </div>
       <div class="column">
         <div class="pl-3 pr-3">
+          <hr />
           <router-view class="mt-3"> </router-view>
         </div>
       </div>
@@ -105,6 +114,11 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    logOut() {
+      this.$router.push({ name: "Home" });
+      this.$router.go();
+    },
+  },
 };
 </script>
